@@ -1,40 +1,27 @@
+// Variables
+
 let cards = []
-let hasBlackjack = false
-let isAlive = true
 let sum = 0
+let isAlive = true
+let blackjack = true
 let message = ""
 
+// DOM
+/*
 let commentEl = document.getElementById("comment-el")
 let cardsEl = document.getElementById("cards-el")
 let sumEl = document.getElementById("sum-el")
+*/
+// Function to generate random card. This will be used by other functions to generate cards.
 
 function randomCard() {
-    randomNumber = Math.floor(Math.random() * 13) + 1
-    if (randomNumber === 1) {
+    newCard = Math.floor(Math.random() * 13) + 1
+    if (newCard === 1) {
         return 11
-    } else if (randomNumber >= 10) {
+    } else if (newCard > 10) {
         return 10
     } else {
-        return randomNumber
+        return newCard
     }
 }
 
-function startBtn() {
-    isAlive = true
-    firstCard = randomCard()
-    secondCard = randomCard()
-    cards = [firstCard, secondCard]
-    sum = firstCard + secondCard
-    cardsEl.textContent = firstCard + ", " + secondCard
-}
-
-function commentUser() {
-    if (sum <= 20) {
-        commentEl.textContent = "Do you want another card?"
-    } else if (sum === 21) {
-        hasBlackjack = true
-        commentEl.textContent = "Awesome, you got Blackjack!"
-    } else {
-        commentEl.textContent = "Sorry, you're out!"
-    }
-}
